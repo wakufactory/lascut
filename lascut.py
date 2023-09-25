@@ -5,15 +5,6 @@ import math
 import os
 
 def main():
-#	tt =(35.735114,139.523062)
-#	tt =(35.690720,139.589386)
-#	tt = (35.663268,139.505360)
-	tt = (35.654427,139.502915)
-	tt = (35.676196,139.358296)	# 中心座標
-	tt =(34.678872,137.597565)
-	tt =(35.029492,138.788278) #kamiike
-	tt = (35.646702,139.474845) #inagi
-	tt = (35.702354,139.555388) #mitaka
 	tt = (35.7589,139.563077) #musashino
 	num = 9 # 直交座標原点系
 	wx = 250 # 経度方向長さ(m)
@@ -38,8 +29,6 @@ def main():
 	py = math.floor(-(ret[1]-300000)/tiley)
 	dy = (ret[1]%tiley)
 	fn = pt2fn(num,px,py)
-	print(fn,dx,dy) 
-#09KD9279 0.8357548138668062 0.1882837456294025
 	files = [datapath+fn+".las"]
 
 	wxr = wx/2
@@ -82,7 +71,7 @@ def main():
 	for f in data['files']:
 		if not os.path.isfile(f):
 			print("file not found "+f)
-			os.system("./getfile.sh "+f.replace("data/","").replace(".las",""))
+			flag = 0
 	if(not flag): return 
 
 	of = open(data['out'],"w")
