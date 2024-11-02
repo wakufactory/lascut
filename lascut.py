@@ -5,15 +5,17 @@ import math
 import os
 
 def main():
-	//データサンプル
-	tt = (35.7589,139.563077) #武蔵野変電所
+# データパラメータサンプル 使う時はここを書き換えてね
+	tt = (35.658609,139.745462) #東京タワー
 	num = 9 # 直交座標原点系
-	wx = 250 # 経度方向長さ(m)
-	wy = 210 # 緯度方向長さ
-	ratio = 0.4 # 間引き率(1=で間引きなし)
-	outf = "musashino.txt" # 出力ファイル
+	wx = 100 # 経度方向長さ(m)
+	wy = 100 # 緯度方向長さ
+	ratio = 0.6 # 間引き率(1=で間引きなし)
+	outf = "ttower.txt" # 出力ファイル
 	datapath = "data/" 
 
+	#直交座標系の"nnXXnnnn.las"形式のlasファイル名を求める
+	#上の設定では 09LD2860.las, 09LD2769.las の2つのファイルが必要
 	def pt2fn(num,px,py):
 		pxh = math.floor(px/100)
 		pyh = math.floor(py/100)
@@ -88,6 +90,7 @@ class GetLas:
 	first = True 
 	count = 0 
 
+	#点群データ出力フォーマット カスタマイズして使ってね
 	def printdata(self,cls,x,y,z,r,g,b,out):
 			x = round(x - self.center[0] + 0.005,2)
 			y = round(y - self.center[1] + 0.005,2)
